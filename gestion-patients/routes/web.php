@@ -4,17 +4,26 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ConsultationController;
 use App\Models\Patient;
+use App\Models\Consultation;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AntecedentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    if (auth()->user()->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+    }
+
+    $patientsAujourdhui = Patient::whereDate('created_at', today())->count();
+    $consultationsAujourdhui = Consultation::whereDate('date', today())->count();
+    $derniersPatients = Patient::latest()->take(5)->get();
+
+    return view('dashboard', compact('patientsAujourdhui', 'consultationsAujourdhui', 'derniersPatients'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
