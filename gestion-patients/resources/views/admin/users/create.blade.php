@@ -19,11 +19,10 @@
 
             <div>
                 <x-input-label for="role" value="Rôle" />
-                <select id="role" name="role" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                    <option value="medecin">Médecin</option>
-                    <option value="receptionniste">Réceptionniste</option>
-                    <option value="admin">Admin</option>
-                </select>
+                <select id="role" name="role" class="mt-1 block w-full border-border rounded-md shadow-sm" required>
+    <option value="receptionniste">Réceptionniste</option>
+    <option value="admin">Admin</option>
+</select>
                 <x-input-error :messages="$errors->get('role')" class="mt-1" />
             </div>
 

@@ -18,9 +18,7 @@
             {{-- Colonne formulaire --}}
             <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                 <div class="flex justify-center">
-                    <div class="h-12 w-12 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-xl font-bold">
-                        GP
-                    </div>
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-24 w-24 object-contain">
                 </div>
                 <h2 class="mt-6 text-center text-xl font-bold text-slate-800">Gestion Patients</h2>
                 <p class="text-center text-sm text-slate-500 mt-1">Connectez-vous à votre espace</p>
